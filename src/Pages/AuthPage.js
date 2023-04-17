@@ -21,7 +21,6 @@ const Auth = observer(() => {
 
         try {
             const response = await registration(name, password)
-            console.log("REGISTRATED")
             currentUser.setUser(response)
             currentUser.setIsAuth(true)
 
@@ -37,9 +36,9 @@ const Auth = observer(() => {
             login(name, password).then(user_data => {
                 currentUser.setUser(user_data)
                 currentUser.setIsAuth(true)
-                console.log("USER ID " + user_data._id)
+                console.log("USER ID " + user_data.id)
                 console.log("USER ROLE " + user_data.role )
-                console.log("USER email " + user_data.email)
+                console.log("USER email " + user_data.name)
 
                 navigate(MAIN_ROUTE)
             })

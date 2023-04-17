@@ -1,30 +1,37 @@
 import React, {useContext, useState} from 'react';
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
-import {createCapi} from "../http/capiApi";
-import {Card, Form} from "react-bootstrap";
+import {createCapi, fetchCapi, fetchCapiByUser} from "../http/capiApi";
+import {Button, Card, Form} from "react-bootstrap";
+import {CAPI_ROUTE} from "../utils/constRoutes";
+import {useNavigate} from "react-router-dom";
 
 const CreateCapi = observer(({show, onHide}) => {
 
-        const {product} = useContext(Context)
 
         const [name, setName] = useState('')
         const [desc, setDesc] = useState('')
         const [file, setFile] = useState(null)
-        const [selectedCategory, setSelectedCategory] = useState({name: null, _id: null})
 
+        const navigate = useNavigate()
 
+        const {currentUser} = useContext(Context)
         const selectFile = e => {
             setFile(e.target.files[0])
         }
 
-        const addProduct = () => {
+        const addCapi = () => {
             const capiData = new FormData();
+
             capiData.append('name', name)
             capiData.append('description', desc)
             capiData.append('image', file)
+            capiData.append('user_id', currentUser.user.id)
 
-            createCapi(capiData).then(r => console.log('wow'))
+            createCapi(capiData).then(capi => {
+                currentUser.setCapi(capi)
+            })
+            navigate(CAPI_ROUTE + '/' + currentUser.capi.id)
         }
         return (
             <Card className={"mt-5"}>
@@ -56,6 +63,8 @@ const CreateCapi = observer(({show, onHide}) => {
 
 
                 </Card.Body>
+                <Button onClick={addCapi}>
+                    CREATE </Button>
             </Card>
 
 

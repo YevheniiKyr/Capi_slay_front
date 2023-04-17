@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import CapibarasStore from "./store/CapibarasStore";
 import UserStore from "./store/UserStore";
+import ConnectionsStore from "./store/ConnectionsStore";
 
 export const Context = createContext(null)
 
@@ -13,7 +14,8 @@ root.render(
   <React.StrictMode>
       <Context.Provider value={{
           capibaras: new CapibarasStore(),
-          currentUser: new UserStore()
+          currentUser: new UserStore(),
+          connections: new ConnectionsStore()
       }} >
     <App />
       </Context.Provider>

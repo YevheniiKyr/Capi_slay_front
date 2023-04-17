@@ -4,7 +4,7 @@ import {Row} from "react-bootstrap";
 import CapibaraItem from "./CapibaraItem";
 import {Context} from "../index";
 
-const CapibaraList = observer(() => {
+const CapibaraList = observer(({capis}) => {
     const {capibaras} = useContext(Context)
         return (
             <Row className="d-flex m-auto ">

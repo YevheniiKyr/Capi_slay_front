@@ -5,18 +5,37 @@ import {Nav} from "react-bootstrap";
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
 import {useNavigate} from "react-router-dom";
-import {CREATE_CAPI_ROUTE, LOGIN_ROUTE, MAIN_ROUTE} from "../utils/constRoutes";
+import {
+
+    CREATE_CAPI_ROUTE,
+    FAMILY_ROUTE,
+    LOGIN_ROUTE,
+    MAIN_ROUTE, MY_CAPI_ROUTE, REQUESTS_ROUTE
+
+} from "../utils/constRoutes";
 
 const NavBar = observer(() => {
 
     const navigate = useNavigate()
 
-    const {currentUser} = useContext(Context)
+    const {currentUser, connections} = useContext(Context)
 
+    const logout  = () => {
+
+        navigate(LOGIN_ROUTE)
+        currentUser.setUser(null)
+        currentUser.setIsAuth(false)
+        currentUser.setCapi(null)
+        currentUser.setCapiFriends([])
+        currentUser.setCapiSpouse(null)
+        localStorage.removeItem('token');
+
+    }
     return (
 
         <Navbar bg="light" variant="dark">
             <Container>
+
                 <Button
                     onClick=
                         {() => {
@@ -25,25 +44,44 @@ const NavBar = observer(() => {
                         }}
                     variant={"light"}>
 
-                    All Frogs </Button>
+                    All Capis
+                </Button>
 
 
                 <Nav className="ml-auto ">
-                    <Button
-                        size={"lg"}
-                        variant={"light"}
-                        style={{marginRight: 15, border: 'none'}}
-                        onClick=
-                            {() => {
-                                navigate(CREATE_CAPI_ROUTE)
-                            }
 
-                            }
 
-                    >
-                        CREATE CAPI
-                    </Button>
-                    {currentUser.isAuth?
+
+                    {currentUser.isAuth ?
+                        <Nav>
+                        <Button
+                            size={"lg"}
+                            variant={"light"}
+                            style={{marginRight: 15, border: 'none'}}
+                            onClick=
+                                {() => {
+                                    currentUser.capi ?
+                                        navigate(MY_CAPI_ROUTE)
+                                        :
+                                        navigate(CREATE_CAPI_ROUTE)
+                                }
+                                }
+
+                        >
+                            {currentUser.capi ? "MY CAPI" : "CREATE CAPI"}
+                        </Button>
+                        <Button
+                            size={"lg"}
+                            variant={"light"}
+                            style={{marginRight: 15, border: 'none'}}
+                            onClick=
+                                {logout}
+
+                        >
+                            LOGOUT </Button>
+                        </Nav>
+                        :
+                        <Nav>
                         <Button
                             size={"lg"}
                             variant={"light"}
@@ -56,21 +94,42 @@ const NavBar = observer(() => {
                                 }
 
                         >
-                            LOGOUT </Button>
-                        :
-                        <Button
-                        size={"lg"}
-                        variant={"light"}
-                        style={{marginRight: 15, border: 'none'}}
-                        onClick=
-                            {() => {
-                                navigate(LOGIN_ROUTE)
-                            }
+                            LOGIN </Button>
+                        </Nav>
 
-                            }
+                    }
+                    {
+                        currentUser.capi?
+                            <Nav>
+                            <Button
+                                size={"lg"}
+                                variant={"light"}
+                                style={{marginRight: 15, border: 'none'}}
+                                onClick=
+                                    {() => {
+                                        navigate(FAMILY_ROUTE)
+                                    }
 
-                    >
-                        LOGIN </Button>
+                                    }
+
+                            >
+                                Family {currentUser.capiFriends? currentUser.capiFriends.length : 0} </Button>
+                            <Button
+                                size={"lg"}
+                                variant={"light"}
+                                style={{marginRight: 15, border: 'none'}}
+                                onClick=
+                                    {() => {
+                                        navigate(REQUESTS_ROUTE)
+                                    }
+
+                                    }
+
+                            >
+                                Requests {currentUser.requests.length} </Button>
+                            </Nav>
+                            :
+                            <></>
                     }
                 </Nav>
 

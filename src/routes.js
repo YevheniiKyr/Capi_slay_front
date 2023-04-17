@@ -1,12 +1,14 @@
 import {
-    CAPI_ROUTE, CREATE_CAPI_ROUTE, LOGIN_ROUTE,
-    MAIN_ROUTE, SIGNUP_ROUTE
+    CAPI_ROUTE, CREATE_CAPI_ROUTE, FAMILY_ROUTE, LOGIN_ROUTE,
+    MAIN_ROUTE, MY_CAPI_ROUTE, REQUESTS_ROUTE, SIGNUP_ROUTE
 } from "./utils/constRoutes";
 import MainPage from "./Pages/MainPage";
 import CapibaraPage from "./Pages/CapibaraPage";
 import CreateCapi from "./Pages/CreateCapi";
-import Auth from "./Pages/AuthPage";
 import authPage from "./Pages/AuthPage";
+import familyPage from "./Pages/familyPage";
+import userCapi from "./Pages/UserCapi";
+import RequestsPage from "./Pages/RequestsPage";
 
 
 
@@ -37,4 +39,18 @@ export const publicRoutes = [
         Component: authPage
     },
 
+    {
+        path:FAMILY_ROUTE,
+        Component: familyPage
+    },
+
+    {
+        path:MY_CAPI_ROUTE,
+        Component: userCapi
+    },
+
+    {
+        path:REQUESTS_ROUTE,
+        Component: RequestsPage
+    }
 ]

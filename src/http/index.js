@@ -21,6 +21,7 @@ const acceptInterceptor = config => {
 }
 
 $authHost.interceptors.request.use(authInterceptor)
+$authHost.interceptors.request.use(acceptInterceptor)
 $host.interceptors.request.use(acceptInterceptor)
 
 export {

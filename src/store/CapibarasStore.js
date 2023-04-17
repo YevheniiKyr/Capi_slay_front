@@ -3,6 +3,13 @@ import {makeAutoObservable} from "mobx";
 
 
 export default class CapibarasStore {
+    get connectionTypes() {
+        return this._connectionTypes;
+    }
+
+    setConnectionTypes(value) {
+        this._connectionTypes = value;
+    }
     get capibaras() {
         return this._capibaras;
     }
@@ -11,10 +18,12 @@ export default class CapibarasStore {
         this._capibaras = value;
     }
 
+
     constructor() {
 
         this._capibaras = []
-        makeAutoObservable(this)
+        this._connectionTypes = []
+        makeAutoObservable(this, {deep: true})
     }
 
 

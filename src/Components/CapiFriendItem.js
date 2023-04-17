@@ -1,32 +1,14 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {observer} from "mobx-react-lite";
 import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import {CAPI_ROUTE} from "../utils/constRoutes";
-import {Context} from "../index";
-import {deleteConnection, deleteFriend, fetchConnections, findConnection} from "../http/capiApi";
 
-const CapibaraItem = observer(({capibara}) => {
+const CapiFriendItem = observer(({capibara}) => {
 
     const navigate = useNavigate()
 
     const [isHovered, setIsHovered] = useState(false);
-
-    const {currentUser} = useContext(Context)
-    console.log("CAPI FRIENDS " + currentUser.capiFriends)
-    const isFriend = currentUser?.capiFriends?.includes(capibara)
-    const isSpouse = currentUser?.capiSpouse === capibara
-
-    const unfriend = () => {
-        console.log("We are here " + currentUser.capi.id + ' ' + capibara.id)
-
-       findConnection(currentUser.capi.id, capibara.id, "friends")
-           .then(connection => {
-               console.log(connection)
-            deleteConnection(connection[0].id).then(r => console.log(r))
-        })
-    }
-
 
     return (
         <Col lg={3} md={4} sm={6} xs={12}
@@ -39,12 +21,8 @@ const CapibaraItem = observer(({capibara}) => {
 
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
-                        onClick={(event) => {
-                            // Check if the clicked element is a button
-                            if (event.target.tagName !== 'BUTTON') {
-                                // Navigate to the specified route
-                                navigate(CAPI_ROUTE + '/' + capibara.id);
-                            }
+                        onClick={() => {
+                            navigate(CAPI_ROUTE + '/' + capibara.id)
                         }
                         }
                         style={{
@@ -67,17 +45,17 @@ const CapibaraItem = observer(({capibara}) => {
                         <Card.Body>
                             <Card.Title className={"d-flex justify-content-center"}
                                         style={{fontSize: '1.5rem'}}> {capibara.name}</Card.Title>
-                            <Card.Text className={"d-flex justify-content-center"} style={{fontSize: '1.0rem'}}>
+                            <Card.Text className={"d-flex justify-content-center"} style={{fontSize: '1.2rem'}}>
                                 {capibara.description}
                             </Card.Text>
-                            <Card.Text className={"d-flex justify-content-center"} style={{fontSize: '1.0rem'}}>
+                            <Card.Text className={"d-flex justify-content-center"} style={{fontSize: '1.2rem'}}>
                                 {capibara.money}$
                             </Card.Text>
 
-                            <Card.Text className={"d-flex justify-content-center"} style={{fontSize: '1.0rem'}}>
+                            <Card.Text className={"d-flex justify-content-center"} style={{fontSize: '1.2rem'}}>
                                 {capibara.weight}kg
                             </Card.Text>
-                            <Card.Text className={"d-flex justify-content-center"} style={{fontSize: '1.0rem'}}>
+                            <Card.Text className={"d-flex justify-content-center"} style={{fontSize: '1.2rem'}}>
                                 {capibara.power}N
                             </Card.Text>
                             <Form>
@@ -85,7 +63,7 @@ const CapibaraItem = observer(({capibara}) => {
                                     <Button
 
                                         style={{
-                                            width: '4rem',
+                                            width: '5rem',
                                             height: '2rem',
                                             fontSize: '1rem',
                                             justifyContent: "center",
@@ -98,26 +76,22 @@ const CapibaraItem = observer(({capibara}) => {
                                         }
 
                                         }>detail</Button>
-                                    {
-                                        isFriend ?
-                                            <Button
+                                    <Button
 
-                                                style={{
-                                                    width: '6rem',
-                                                    height: '2rem',
-                                                    fontSize: '1rem',
-                                                    justifyContent: "center",
-                                                    verticalAlign: "center"
-                                                }}
-                                                className={"d-flex m-auto btn-danger"}
-                                                onClick={
-                                                    unfriend
-                                                }
+                                        style={{
+                                            width: '6rem',
+                                            height: '2rem',
+                                            fontSize: '1rem',
+                                            justifyContent: "center",
+                                            verticalAlign: "center"
+                                        }}
+                                        className={"d-flex m-auto btn-danger"}
+                                        onClick={() => {
+                                            navigate(CAPI_ROUTE + '/' + capibara.id)
 
-                                            >Unfriend</Button>
-                                            :
-                                            <></>
-                                    }
+                                        }
+
+                                        }>Unfriend</Button>
                                 </Row>
                             </Form>
 
@@ -131,4 +105,4 @@ const CapibaraItem = observer(({capibara}) => {
     );
 })
 
-export default CapibaraItem;
+export default CapiFriendItem;
