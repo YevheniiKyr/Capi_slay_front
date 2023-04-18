@@ -54,30 +54,30 @@ function App() {
     }, [])
 
 
-    // useEffect(() => {
-    //     //цей фетч треба робити коли є  юзер капі ід
-    //     //
-    //
-    //        setInterval(() => {
-    //             if (currentUser?.capi?.id) {
-    //                 console.log("DO IT")
-    //                 fetchRequests(currentUser.capi.id, 'proposed').then(data => {
-    //
-    //                     currentUser.setRequests(data)
-    //                     console.log("LEN " +data.length)
-    //                 })
-    //                 fetchCapiFriends(currentUser.capi.id).then(data => {
-    //                     currentUser.setCapiFriends(data)
-    //                 })
-    //                 fetchSpouse(currentUser.capi.id).then(data => {
-    //                     currentUser.setCapiSpouse(data)
-    //                 })
-    //             }
-    //         }, 10000)
-    //
-    //
-    //     }
-    // )
+    useEffect(() => {
+        //цей фетч треба робити коли є  юзер капі ід
+        //
+
+           setInterval(() => {
+                if (currentUser?.capi?.id) {
+                    console.log("DO IT")
+                    fetchRequests(currentUser.capi.id, 'proposed').then(data => {
+
+                        currentUser.setRequests(data)
+                        console.log("LEN " +data.length)
+                    })
+                    fetchCapiFriends(currentUser.capi.id).then(data => {
+                        currentUser.setCapiFriends(data)
+                    })
+                    fetchSpouse(currentUser.capi.id).then(data => {
+                        currentUser.setCapiSpouse(data)
+                    })
+                }
+            }, 10000)
+
+
+        }
+    )
 
 
 
