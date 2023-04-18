@@ -1,5 +1,5 @@
 import {
-    CAPI_ROUTE, CREATE_CAPI_ROUTE, FAMILY_ROUTE, LOGIN_ROUTE,
+    CAPI_ROUTE, CREATE_CAPI_ROUTE, EDIT_CAPI_ROUTE, FAMILY_ROUTE, LOGIN_ROUTE,
     MAIN_ROUTE, MY_CAPI_ROUTE, REQUESTS_ROUTE, SIGNUP_ROUTE
 } from "./utils/constRoutes";
 import MainPage from "./Pages/MainPage";
@@ -9,6 +9,7 @@ import authPage from "./Pages/AuthPage";
 import familyPage from "./Pages/familyPage";
 import userCapi from "./Pages/UserCapi";
 import RequestsPage from "./Pages/RequestsPage";
+import EditCapi from "./Pages/EditCapi";
 
 
 
@@ -28,7 +29,10 @@ export const publicRoutes = [
         path: CREATE_CAPI_ROUTE,
         Component: CreateCapi
     },
-
+    {
+        path: EDIT_CAPI_ROUTE,
+        Component: EditCapi
+    },
     {
         path: LOGIN_ROUTE,
         Component: authPage

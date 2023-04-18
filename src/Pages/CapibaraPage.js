@@ -23,9 +23,12 @@ const CapibaraPage = observer(() => {
 
             fetchCapi(id).then(data => {
                 setCapi(data)
-                if (currentUser.capiFriends.length > 0) {
+                if (currentUser.capiFriends?.length > 0) {
                     const capiFriends = currentUser.capiFriends.map(capi => capi.id)
                     SetIsFriend(capiFriends.includes(data.id))
+
+                }
+                if(currentUser.capiSpouse){
                     SetIsSpouse(currentUser.capiSpouse.id === data.id)
                 }
             })
@@ -49,17 +52,23 @@ const CapibaraPage = observer(() => {
             })
         }
         const unfriend = () => {
-            // console.log("We are here " + currentUser.capi.id + ' ' + capi.id)
-            //
-            // findConnection(currentUser.capi.id, capi.id, "friends")
-            //     .then(connection => {
-            //         console.log(connection)
-            //         deleteConnection(connection[0].id).then(r => console.log(r))
-            //     })
+            console.log("We are here " + currentUser.capi.id + ' ' + capi.id)
+
+            findConnection(currentUser.capi.id, capi.id, "friends")
+                .then(connection => {
+                    console.log(connection)
+                    deleteConnection(connection[0].id).then(r => console.log(r))
+                })
         }
 
         const divorce = () => {
-
+            console.log("DIV")
+            findConnection(currentUser.capi.id, capi.id, "married")
+                .then(connection => {
+                    console.log("CON")
+                    console.log(connection)
+                    deleteConnection(connection[0].id).then(r => console.log(r))
+                })
         }
 
         return (
@@ -94,7 +103,10 @@ const CapibaraPage = observer(() => {
 
                                 }
                             </Button>
-
+                            {
+                                isSpouse?
+                                    <></>
+                                    :
                             <Button size={"lg"}
                                     style={{fontSize: '1rem'}}
                                     className={isFriend ? "mt-3 btn-danger" : "mt-3 btn-success"}
@@ -107,7 +119,7 @@ const CapibaraPage = observer(() => {
                                     }
 
                             > {isFriend ? "UNFRIEND" : "FRIEND"}</Button>
-
+                            }
                         </Form>
 
                     </Card.Body>

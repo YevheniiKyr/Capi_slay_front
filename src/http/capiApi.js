@@ -111,6 +111,8 @@ export const answerConnection = async (connection, answer) => {
     return data
 }
 
+
+
 export const findConnection = async (capi_1, capi_2, filter) => {
     const {data} = await $authHost.get(`connections/`, {
         params: {
@@ -124,5 +126,15 @@ export const findConnection = async (capi_1, capi_2, filter) => {
 
 export const deleteConnection = async (id) => {
     const {data} = await $authHost.delete(`connections/${id}`)
+    return data
+}
+
+export const deleteUserCapi = async (id) => {
+    const {data} = await $authHost.delete(`capibaras/${id}`)
+    return data
+}
+
+export const updateCapi = async(capi) => {
+    const {data} = await $authHost.put(`capibaras/${capi.get('id')}`, capi)
     return data
 }

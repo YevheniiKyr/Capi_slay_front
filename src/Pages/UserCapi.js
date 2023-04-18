@@ -2,9 +2,11 @@ import React, {useContext, useEffect, useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import {connectCapis, fetchCapi, marryCapi} from "../http/capiApi";
 import {Button, Card, Container, Form} from "react-bootstrap";
-import {MAIN_ROUTE} from "../utils/constRoutes";
+import {CREATE_CAPI_ROUTE, EDIT_CAPI_ROUTE, MAIN_ROUTE} from "../utils/constRoutes";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
+import ConfirmationModal from "../Components/ConfirmationModal";
+
 
 const UserCapi = observer(() => {
 
@@ -12,6 +14,8 @@ const UserCapi = observer(() => {
         const navigate = useNavigate()
 
         const {currentUser, capibaras} = useContext(Context)
+
+        const [confirmationVisible, setConfirmationVisible] = useState(false)
 
         useEffect(() => {
 
@@ -39,6 +43,7 @@ const UserCapi = observer(() => {
                             <Button size={"lg"}
                                     style={{fontSize: '1rem'}}
                                     className={"mt-3 me-5 btn-info"}
+                                    onClick={() => navigate(EDIT_CAPI_ROUTE)}
 
                             >
                                 EDIT
@@ -46,14 +51,15 @@ const UserCapi = observer(() => {
 
                             <Button size={"lg"}
                                     style={{fontSize: '1rem'}}
-                                    className={"mt-3 btn-success"}
+                                    className={"mt-3 btn-danger"}
+                                    onClick={() => setConfirmationVisible(true)}
 
-
-                            > FRIEND </Button>
+                            > SUICIDE </Button>
                         </Form>
 
                     </Card.Body>
                 </Card>
+                <ConfirmationModal show={confirmationVisible} onHide =  {() => setConfirmationVisible(false)} ></ConfirmationModal>
             </Container>
 
 

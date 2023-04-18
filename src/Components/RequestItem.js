@@ -33,12 +33,16 @@ const RequestItem = ({request}) => {
         answerConnection(request, "approved").then(data => {
             console.log(data)
         })
+        currentUser.setRequests(currentUser.requests.filter(req => req.id !== request.id))
+
     }
     const decline = () => {
         answerConnection(request, "declined").then(data => {
             console.log(data)
 
         })
+        currentUser.setRequests(currentUser.requests.filter(req => req.id !== request.id))
+
     }
     const cancel = () => {
         deleteConnection(request.id).then(data => {

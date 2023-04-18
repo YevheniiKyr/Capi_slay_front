@@ -26,6 +26,14 @@ const CapibaraItem = observer(({capibara}) => {
             deleteConnection(connection[0].id).then(r => console.log(r))
         })
     }
+    const divorce = () => {
+        findConnection(currentUser.capi.id, capibara.id, "spouse")
+            .then(connection => {
+                console.log(connection)
+                deleteConnection(connection[0].id).then(r => console.log(r))
+            })
+    }
+
 
 
     return (
@@ -115,6 +123,27 @@ const CapibaraItem = observer(({capibara}) => {
                                                 }
 
                                             >Unfriend</Button>
+                                            :
+                                            <></>
+                                    }
+
+                                    {
+                                        isSpouse ?
+                                            <Button
+
+                                                style={{
+                                                    width: '6rem',
+                                                    height: '2rem',
+                                                    fontSize: '1rem',
+                                                    justifyContent: "center",
+                                                    verticalAlign: "center"
+                                                }}
+                                                className={"d-flex m-auto btn-danger"}
+                                                onClick={
+                                                    divorce
+                                                }
+
+                                            >Divorce</Button>
                                             :
                                             <></>
                                     }

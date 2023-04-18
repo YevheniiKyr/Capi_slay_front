@@ -31,6 +31,8 @@ const NavBar = observer(() => {
         localStorage.removeItem('token');
 
     }
+
+
     return (
 
         <Navbar bg="light" variant="dark">
@@ -113,7 +115,9 @@ const NavBar = observer(() => {
                                     }
 
                             >
-                                Family {currentUser.capiFriends? currentUser.capiFriends.length : 0} </Button>
+
+
+                                Family {currentUser.capiFriends? currentUser.capiFriends.length + currentUser.capiSpouse? 1: 0  : currentUser.capiSpouse? 1: 0} </Button>
                             <Button
                                 size={"lg"}
                                 variant={"light"}
