@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# How to run app
+To follow this instruction you need use npm.
+If you use other packet manager, you need find out how to run client-server projects by yourself 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+   - go to the client directory
+   - write 'npm install' to install all dependencies
+   - write 'npm run start' to run react app
 
-## Available Scripts
+# Description
+This is client side of social media app with capybaras. Here you can create your own capybara and find new friends or even love.
+Enjoy capybara world.  
+[Server side](https://github.com/YevheniiKyr/capibara_life)
 
-In the project directory, you can run:
+# Technology stack
+ React js, MobX
 
-### `npm start`
+# Demonstartion
+## Login page 
+![image](https://github.com/YevheniiKyr/Capi_slay_front/assets/84139553/b161ceb3-a6e6-4eda-a44b-8cd481fb7dd5)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Main page
+ ![image](https://github.com/YevheniiKyr/Capi_slay_front/assets/84139553/9ece2d60-3b40-4172-a2ff-004cb6781441)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Capybara creation page
+![image](https://github.com/YevheniiKyr/Capi_slay_front/assets/84139553/f5c10389-ac32-4b58-a2e9-d19698d7156e)
 
-### `npm test`
+## Your capy page
+![image](https://github.com/YevheniiKyr/Capi_slay_front/assets/84139553/3877d542-a9d2-491c-980c-145316c4acb5)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Do not kill capybaras
+![image](https://github.com/YevheniiKyr/Capi_slay_front/assets/84139553/21113de4-7b10-43f6-a90c-5c26818c08ae)
 
-### `npm run build`
+## Other capybaras page
+![image](https://github.com/YevheniiKyr/Capi_slay_front/assets/84139553/a3baa899-1a45-46f4-a99c-dfa94b112d52)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Requests page 
+![image](https://github.com/YevheniiKyr/Capi_slay_front/assets/84139553/c08f483d-696a-4cc0-b3e9-055d96851a65)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Incoming requests
+![image](https://github.com/YevheniiKyr/Capi_slay_front/assets/84139553/34448b18-19ab-4408-8d5b-1f315d138aae)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Friends page
+![image](https://github.com/YevheniiKyr/Capi_slay_front/assets/84139553/c134efb1-7873-4044-8f42-300a31106fd5)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
